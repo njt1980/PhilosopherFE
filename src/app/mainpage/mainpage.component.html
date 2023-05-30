@@ -1,0 +1,55 @@
+<div
+  class="bg-image"
+  style="
+    background-image: url('https://mdbcdn.b-cdn.net/img/Photos/Others/images/76.webp');
+    height: 100vh;
+  "
+>
+</div>
+<div id="userinput">
+  <form [formGroup]="userInputForm" (ngSubmit)="onSubmit()">
+      <div class="mb-3" style="text-align:center;">
+        <h1>The Philosopher</h1>
+        <label for="UserThought" class="form-label"></label>
+        <input type="email" class="form-control" id="UserThought" placeholder="Mention what you are feeling and why" formControlName="userInput">
+        <p>                                 </p>
+        <button type="submit" class="btn btn-primary">Submit</button>
+      </div>
+  </form>
+</div>
+
+<div id="philosophicalresponse" *ngIf=" !loading && responseReceived" class="container">
+  <h5><i>Philosopher says</i>  : {{ philResponse.summary }}</h5>
+  <div class="row">
+  <i><h6>{{ philResponse.source }} : {{ philResponse.quote }}</h6></i>
+  </div>
+  <!-- <div class="row">
+  <i><h6>{{ philResponse.sources[1] }} : {{ philResponse.quotes[1] }}</h6></i>
+  </div> -->
+  <div class="row"><a href="{{ philResponse.link }}">You might be interested in this article</a></div>
+  
+  <!-- <h5>You might be interested in : {{ philResponse.links[0] }}</h5> -->
+</div>
+
+<!-- <div *ngIf=" responseReceived ; else loading">
+  <p>Received philosophical response</p>
+  {{ philResponse.summary }}
+</div> -->
+<!-- <ng-template id="philosophicalresponse" #loading>
+  <p>Condition is false ...</p>
+</ng-template> -->
+<div *ngIf="loading">
+  <!-- <ng-template #loading> -->
+    <div class="thinking">
+      <div class="spinner-grow text-dark" role="status">
+        <span class="visually-hidden">Loading...</span>
+      </div>
+      <div class="buddha">
+        <img src="/assets/img/buddha.png" alt="image">
+      </div>
+    </div>
+  <!-- </ng-template> -->
+</div>
+
+
+
